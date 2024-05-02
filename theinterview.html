@@ -1,0 +1,89 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Interview</title>
+    <link rel="stylesheet" href="stylesc.css">
+</head>
+<body>
+    <header>
+        <a href="../index.html">
+          <div class="container">
+            <img src="/src/favicon.png">
+            <h1>FlickFix</h1>
+          </div>
+        </a>
+          <nav>
+            <ul>
+              <li><a href="../action.html">Action</a></li>
+              <li><a href="../animation.html">Animation</a></li>
+              <li><a href="../comedy.html">Comedy</a></li>
+              <li><a href="../drama.html">Drama</a></li>
+              <li><a href="../horror.html">Horror</a></li>
+              <li><a href="../scifi.html">Sci-fi</a></li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+        
+
+    <div class="content">
+        <img src="interju.jpg" alt="La La Land" width="350" height="350">
+        <div style="margin-left: 40px;" >
+            <h2>The Interview</h2>
+            <p>You may be referring to the movie "The Interview", a 2014 American comedy and political satire. The film stars James Franco and Seth Rogen as two American TV entertainment hosts who travel to North Korea to interview North Korean leader Kim Jong Un. However, instead of the planned interview, the two presenters get caught up in a dangerous espionage conspiracy.
+                The movie "Interju" was surrounded by a lot of controversy and controversy before its release, because of its story and its connection with North Korea, the movie could have serious political consequences. Prior to the film's release, the North Korean government strongly protested against it, and the country's leadership reportedly launched cyber-attacks against the film's performers and distributors. This event represented an unusual collision between the film industry and politics, which attracted considerable attention around "Interju".
+                Despite the controversy surrounding "Interju", the film itself is a fun and humorous work, which many consider to be a well-executed political satire. The chemistry between James Franco and Seth Rogen, as well as the film's absurd and sensitive situations are guaranteed to bring a smile to your face. "Interju" is therefore not only a comedy, but also a film that shows the limits of political tensions and absurdities.                
+                </p>
+            <input type="number" id="numberInput" placeholder="Rate this movie from 1 to 10" min="1" max="10" >
+            <p>Viewers' average rating:</p>
+            <div id="averageDisplay" display="flex"  ></div>
+        </div>
+    </div>
+    
+    <figure class="trailerContainer">
+        <iframe class="trailer" src="https://www.youtube.com/embed/frsvWVEHowg?si=BhcM4-EbXjOTcrUD" ></iframe>
+    </figure>
+    
+    <footer>
+        <div class="contaner">
+            <p>
+                &copy 2024 flickFlix
+            </p>
+        </div>
+    </footer>
+     <script>
+    let sum = parseFloat(localStorage.getItem('sumin')) || 0;
+let count = parseInt(localStorage.getItem('countin')) || 0;
+updateAverage();
+
+document.getElementById('numberInput').addEventListener('keypress', function(event) {
+    if (event.keyCode === 13) {
+        let number = parseFloat(this.value);
+        if (number >= 1 && number <= 10) {
+            sum += number;
+            count++;
+            localStorage.setItem('sumdin', sum.toString());
+            localStorage.setItem('countdin', count.toString());
+            updateAverage();
+            this.value = '';
+        }
+    }
+});
+
+function updateAverage() {
+    if (count > 0) {
+        let average = sum / count;
+        let roundedAverage = Math.round(average);
+        let stars = '';
+        for (let i = 0; i < roundedAverage; i++) {
+            stars += '★';
+        }
+        document.getElementById('averageDisplay').innerHTML = '<div class="star-container"><div class="star">' + stars + '</div></div>';
+    }
+}
+
+</script>
+</body>
+</html>

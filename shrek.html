@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shrek</title>
+     <link rel="stylesheet" href="stylesa.css">
+</head>
+<body>
+    <header>
+        <a href="../index.html">
+          <div class="container">
+            <img src="/src/favicon.png">
+            <h1>FlickFix</h1>
+          </div>
+        </a>
+          <nav>
+            <ul>
+              <li><a href="../action.html">Action</a></li>
+              <li><a href="../animation.html">Animation</a></li>
+              <li><a href="../comedy.html">Comedy</a></li>
+              <li><a href="../drama.html">Drama</a></li>
+              <li><a href="../horror.html">Horror</a></li>
+              <li><a href="../scifi.html">Sci-fi</a></li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+        
+
+    <div class="content">
+        <img src="../src/poster/Poster (30).jpg" width="350" height="350">
+        <div style="margin-left: 40px;" >
+            <h2>Shrek</h2>
+            <p> Shrek
+                "Shrek" is a 2001 American animated film directed by Andrew Adamson and Vicky Jenson. It was produced by DreamWorks Animation and is considered one of the most beloved and iconic animated films of the 2000s.
+                The story of "Shrek" is about a green ogre, Shrek, who lives in a deserted swamp, and his peaceful life is unexpectedly disturbed by a group of fairy-tale creatures, including Princess Fiona, who is a human during the day and an ogre at night due to a curse. Shrek sets off to bring Fiona back to the evil Lord Farquaad, who wants to rule the kingdom.
+                "Shrek" is a humorous and entertaining film that parodies fairy tale clichés and Disney tales. The film has stunning animation, excellent voice acting and a touching story. Characters such as Shrek, Fiona and the talking donkey Farquaad and Santa have been popular and loved by fans ever since.                     </p>
+            <input type="number" id="numberInput" placeholder="Rate this movie from 1 to 10" min="1" max="10" >
+            <p>Viewers' average rating:</p>
+            <div id="averageDisplay" display="flex"  ></div>
+        </div>
+    </div>
+    
+    <figure class="trailerContainer">
+        <iframe class="trailer" src="https://www.youtube.com/embed/CwXOrWvPBPk?si=wgK-XHXNtV9Ntm6J"  ></iframe>
+    </figure> 
+    
+    <footer>
+        <div class="contaner">
+            <p>
+                &copy 2024 flickFlix
+            </p>
+        </div>
+    </footer>
+     <script>
+    let sum = parseFloat(localStorage.getItem('sumshrek')) || 0;
+let count = parseInt(localStorage.getItem('countshrek')) || 0;
+updateAverage();
+
+document.getElementById('numberInput').addEventListener('keypress', function(event) {
+    if (event.keyCode === 13) {
+        let number = parseFloat(this.value);
+        if (number >= 1 && number <= 10) {
+            sum += number;
+            count++;
+            localStorage.setItem('sumshrek', sum.toString());
+            localStorage.setItem('countshrek', count.toString());
+            updateAverage();
+            this.value = '';
+        }
+    }
+});
+
+function updateAverage() {
+    if (count > 0) {
+        let average = sum / count;
+        let roundedAverage = Math.round(average);
+        let stars = '';
+        for (let i = 0; i < roundedAverage; i++) {
+            stars += '★';
+        }
+        document.getElementById('averageDisplay').innerHTML = '<div class="star-container"><div class="star">' + stars + '</div></div>';
+    }
+}
+
+</script>
+</body>
+</html>

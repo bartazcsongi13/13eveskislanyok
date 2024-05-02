@@ -1,0 +1,87 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soul</title>
+     <link rel="stylesheet" href="stylesa.css">
+</head>
+<body>
+    <header>
+        <a href="../index.html">
+          <div class="container">
+            <img src="../src/favicon.png">
+            <h1>FlickFix</h1>
+          </div>
+        </a>
+          <nav>
+            <ul>
+              <li><a href="../action.html">Action</a></li>
+              <li><a href="../animation.html">Animation</a></li>
+              <li><a href="../comedy.html">Comedy</a></li>
+              <li><a href="../drama.html">Drama</a></li>
+              <li><a href="../horror.html">Horror</a></li>
+              <li><a href="../scifi.html">Sci-fi</a></li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+        
+
+    <div class="content">
+        <img src="soul.jpg" alt="La La Land" width="350" height="350">
+        <div style="margin-left: 40px;" >
+            <h2>Soul</h2>
+            <p>"Soul" is a 2020 American animated film produced by Pixar Animation Studios. The film was directed by Pete Docter and Kemp Powers and is considered one of the most defining works in Pixar history. "Soul" tells the story of a jazz musician, Joe Gardner, who gets one of the most important opportunities of his life to be able to play music. However, due to an accident, his soul ends up in the "Soul World", a place where the soul is formed and developed before being born into a new human. However, Joe refuses to accept his death and mentors a soul to try to return to his body and continue playing music. "Soul" explores deep and touching themes such as the meaning of life, passion and personal goals. The film has beautiful animation, a stunning musical score and a touching story. Due to the elaboration of the characters and the world, as well as the overall positive message of the film, "Soul" became one of the most popular and recognized animated films in the year 2020.
+                </p>
+            <input type="number" id="numberInput" placeholder="Rate this movie from 1 to 10" min="1" max="10" >
+            <p>Viewers' average rating:</p>
+            <div id="averageDisplay" display="flex"  ></div>
+        </div>
+    </div>
+    
+    <figure class="trailerContainer">
+        <iframe class="trailer" src="https://www.youtube.com/embed/xOsLIiBStEs?si=6slYgGUPB4R7RFbR"  ></iframe>
+    </figure>
+    
+    <footer>
+        <div class="contaner">
+            <p>
+                &copy 2024 FlickFlix
+            </p>
+        </div>
+    </footer>
+     <script>
+    let sum = parseFloat(localStorage.getItem('sumso')) || 0;
+let count = parseInt(localStorage.getItem('countso')) || 0;
+updateAverage();
+
+document.getElementById('numberInput').addEventListener('keypress', function(event) {
+    if (event.keyCode === 13) {
+        let number = parseFloat(this.value);
+        if (number >= 1 && number <= 10) {
+            sum += number;
+            count++;
+            localStorage.setItem('sumso', sum.toString());
+            localStorage.setItem('countso', count.toString());
+            updateAverage();
+            this.value = '';
+        }
+    }
+});
+
+function updateAverage() {
+    if (count > 0) {
+        let average = sum / count;
+        let roundedAverage = Math.round(average);
+        let stars = '';
+        for (let i = 0; i < roundedAverage; i++) {
+            stars += '★';
+        }
+        document.getElementById('averageDisplay').innerHTML = '<div class="star-container"><div class="star">' + stars + '</div></div>';
+    }
+}
+
+</script>
+</body>
+</html>
